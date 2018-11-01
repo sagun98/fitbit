@@ -9,26 +9,39 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Hello page</title>
-</head>
-<body>Add minutes
+<title>Add Goal</title>
+<style> 
+.error {
+	color: #ff0000;
+}
 
-Language: <a href="?language=en"> English</a>| <a href="?language=es"> Spanish</a> 
-<form:form commandName="exercise">
+.errorblock {
+	color: #000;
+	background-color: #ffEEEE;
+	border: 3px solid black;
+	padding: 8px;
+	margin: 16px;
+}
+
+</style>
+</head>
+<body>
+
+<form:form commandName="goal">
+	<form:errors path="*" cssClass="errorblock" element="div" />
 	<table>
 		<tr>
-			<td><spring:message code="goal.text"/></td>
-			<td><form:input path="minutes"/></td>
+			<td>Enter Minutes:</td>
+			<td><form:input path="minutes" cssErrorClass="error"/></td>
+			<td><form:errors path="minutes" cssClass="error"/></td>
 		</tr>
 	
 		<tr>
-			<td colspan="2"><input type="submit" value="Enter Exercise"> </td>
+			<td colspan="3"><input type="submit" value="Enter Exercise Goal Minutes"> </td>
 		</tr>
 		
 		
 	</table>
 </form:form>
-
-<h1>Our goal of the day is ${goal.minutes} </h1>
 </body>
 </html>
